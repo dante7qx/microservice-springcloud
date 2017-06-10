@@ -21,6 +21,7 @@ eureka:
   client:
     service-url:
       defaultZone: ${eureka.cluster:http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/}
+#     defaultZone: http://dante:iamdante@peer1:8761/eureka/,http://dante:iamdante@peer2:8762/eureka/,http://dante:iamdante@peer3:8763/eureka/
   instance:
     instance-id: ${spring.cloud.client.ipAddress}:${server.port}
     prefer-ip-address: true
