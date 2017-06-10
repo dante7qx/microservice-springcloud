@@ -1,0 +1,15 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: micro-hystrix-turbine-single
+eureka:
+  instance:
+    home-page-url: /cusfig
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+turbine:
+  aggregator:
+    clusterConfig: MICRO-CONSUMER-USER-FEIGN-HYSTRIX   # 必须大写
+  appConfig: micro-consumer-user-feign-hystrix

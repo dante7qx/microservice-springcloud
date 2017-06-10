@@ -1,0 +1,19 @@
+server:
+  port: 9004
+spring:
+  application:
+    name: micro-hystrix-turbine-mgrport
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+turbine:
+  aggregator:
+    clusterConfig: USER
+  appConfig: micro-consumer-user-feign-hystrix4
+  cluster-name-expression: metadata['cluster']
+#logging:
+#  level:
+#    root: INFO
+#    com.netflix.turbine.monitor: DEBUG
+    

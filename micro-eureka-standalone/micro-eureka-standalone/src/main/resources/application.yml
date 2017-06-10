@@ -1,0 +1,19 @@
+server:
+  port: 8761
+security:
+  user:
+    name: dante
+    password: iamdante
+eureka: 
+  server:
+    enable-self-preservation: false # 关闭自我保护模式
+  instance:
+    hostname: localhost
+    prefer-ip-address: true # 猜测主机名时，优先选择ip。默认为false，使用hostname作为主机名
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+  environment: dante-dev
+  datacenter: dante-cloud

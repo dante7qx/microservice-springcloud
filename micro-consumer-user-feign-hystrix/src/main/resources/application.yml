@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: clustor1
+    
+# clustor1 和 clustor2 模拟两个微服务应用
+# clustor3配置自定义的上下文，通过home-page-url-path 和 turbine.instanceUrlSuffix.appname=ctx/hystrix.stream 解决

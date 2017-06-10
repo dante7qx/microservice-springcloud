@@ -1,0 +1,16 @@
+security:
+  user:
+    name: dante
+    password: iamdante
+    
+--- 
+server:
+  port: 8761
+eureka: 
+  server:
+    enable-self-preservation: false # 关闭自我保护模式
+  instance:
+    prefer-ip-address: true # 猜测主机名时，优先选择ip。默认为false，使用hostname作为主机名
+  client:
+    service-url:
+      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/

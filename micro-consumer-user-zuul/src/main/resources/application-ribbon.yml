@@ -1,0 +1,22 @@
+server:
+  port: 8881
+spring:
+  application:
+    name: micro-consumer-user-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+# feign hystrix 请求的默认超时时间是1秒，这里修改为5秒，解决第一次调用超时的问题
+#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+zuul:
+  routes:
+    provider-user:
+      path: /zuul_user/**
+      serviceId: micro-provider-user
+ribbon:
+  eureka:
+    enabled: false
+micro-provider-user:
+  ribbon:
+    listOfServers: http://localhost:7000,http://localhost:7002

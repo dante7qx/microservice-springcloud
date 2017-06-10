@@ -1,0 +1,17 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: micro-hystrix-turbine-multiple
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+turbine:
+  aggregator:
+    clusterConfig: default
+  appConfig: micro-consumer-user-feign-hystrix,micro-consumer-user-feign-hystrix2
+  cluster-name-expression: "'default'"
+  
+  
+# 监控多个微服务集群，多个微服务用逗号分隔

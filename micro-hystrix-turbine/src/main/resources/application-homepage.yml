@@ -1,0 +1,20 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: micro-hystrix-turbine-homepage
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+turbine:
+  aggregator:
+    clusterConfig: MICRO-CONSUMER-USER-FEIGN-HYSTRIX3
+  appConfig: micro-consumer-user-feign-hystrix3
+  instanceUrlSuffix:
+    MICRO-CONSUMER-USER-FEIGN-HYSTRIX3: cusfig/hystrix.stream
+#logging:
+#  level:
+#    root: INFO
+#    com.netflix.turbine.monitor: DEBUG
+    

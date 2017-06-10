@@ -1,0 +1,19 @@
+server:
+  port: ${config.port:8888}
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git.oschina.net/dante7qx/oschina-config-repo
+          username: sunchao.0129@163.com
+          password: iamdante
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: dante
+    password: 123456
+    virtual-host: /springcloudbus
+logging:
+  level:
+    com.netflix.discovery.TimedSupervisorTask: 'off'

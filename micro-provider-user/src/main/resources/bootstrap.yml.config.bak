@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: micro-provider-user
+  cloud:
+    config:
+      profile: ${config.profile:test}
+      discovery:
+        enabled: true
+        service-id: MICRO-CONFIG
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/

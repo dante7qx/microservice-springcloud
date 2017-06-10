@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: mgrport
+    
+# single配置单个微服务集群，multiple配置多个微服务应用集群
