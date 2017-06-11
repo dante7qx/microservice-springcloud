@@ -1,0 +1,27 @@
+server:
+  port: 7008
+spring:
+  application:
+    name: micro-provider-user3
+  datasource:
+    platform: h2
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: info
+    org.dante.springcloud: debug
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka.cluster:http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/}
+#     defaultZone: http://dante:iamdante@peer1:8761/eureka/,http://dante:iamdante@peer2:8762/eureka/,http://dante:iamdante@peer3:8763/eureka/
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true

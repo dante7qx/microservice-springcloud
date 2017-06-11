@@ -27,6 +27,7 @@
 		<module>micro-hystrix-turbine</module>
 		<module>micro-provider-user</module>
 		<module>micro-provider-user2</module>
+		<module>micro-provider-user3</module>
 		<module>micro-provider-user-config</module>
 		<module>micro-consumer-user</module>
 		<module>micro-consumer-user-feign</module>
@@ -34,7 +35,7 @@
 		<module>micro-consumer-user-zuul</module>
 	</modules>
 
-	<!--  
+	<!--
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -52,7 +53,7 @@
 		</dependencies>
 	</dependencyManagement>
 	-->
-	
+	 
 	<parent>
 	    <groupId>org.springframework.boot</groupId>
 	    <artifactId>spring-boot-starter-parent</artifactId>
@@ -69,6 +70,7 @@
 	        </dependency>
 	    </dependencies>
 	</dependencyManagement>
+
 	
 	<dependencies>
 		<dependency>

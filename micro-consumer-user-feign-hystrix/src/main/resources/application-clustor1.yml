@@ -7,11 +7,15 @@ eureka:
   client:
     service-url:
       defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+# 若配置 ribbon 的超时时间，则 hystrix 的超时时间必须大于 ribbon 的超时时间
 # feign hystrix 请求的默认超时时间是1秒，这里修改为5秒，解决第一次调用超时的问题
-#hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
-ribbon: 
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+# Dalston Release版本默认为false
+feign.hystrix.enabled: true 
+#micro-provider-user2:
+#  ribbon: 
+#    ReadTimeout: 10000
+#    ConnectTimeout: 10000
 logging:
   level:
     org.dante.springcloud.feignclient.UserFeignClient: DEBUG

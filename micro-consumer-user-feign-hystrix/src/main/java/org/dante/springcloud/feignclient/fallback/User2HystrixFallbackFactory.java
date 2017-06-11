@@ -1,6 +1,5 @@
 package org.dante.springcloud.feignclient.fallback;
 
-import org.dante.springcloud.controller.UserController;
 import org.dante.springcloud.domain.User;
 import org.dante.springcloud.feignclient.User2FeignClient;
 import org.slf4j.Logger;

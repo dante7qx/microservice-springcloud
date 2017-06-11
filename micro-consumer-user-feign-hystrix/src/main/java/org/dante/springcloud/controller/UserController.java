@@ -6,11 +6,9 @@ import org.dante.springcloud.domain.User;
 import org.dante.springcloud.feignclient.EurekaFeignConfigClient;
 import org.dante.springcloud.feignclient.User2FeignClient;
 import org.dante.springcloud.feignclient.UserFeignClient;
-import org.dante.springcloud.feignclient.UserFeignDisableHystrixClient;
+import org.dante.springcloud.feignclient.UserFeignNoHystrixClient;
 import org.dante.springcloud.vo.PageReq;
 import org.dante.springcloud.vo.UserVO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,14 +24,12 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 @RestController
 public class UserController {
 
-	private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-
 	@Autowired
 	private UserFeignClient userFeignClient;
 	@Autowired
 	private User2FeignClient user2FeignClient;
 	@Autowired
-	private UserFeignDisableHystrixClient userFeignDisableHystrixClient;
+	private UserFeignNoHystrixClient userFeignNoHystrixClient;
 	@Autowired
 	private EurekaFeignConfigClient userFeignConfigClient;
 
@@ -104,8 +100,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/user3/{id}")
-	@HystrixCommand(commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "8000") })
+	@HystrixCommand
 	public User getUser3(@PathVariable Long id) {
-		return userFeignDisableHystrixClient.getUser(id);
+		return userFeignNoHystrixClient.getUser(id);
 	}
 }
