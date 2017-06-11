@@ -20,6 +20,8 @@ public class UserController {
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
 		User user = userDao.findOne(id);
+		// 测试ribbon、hystrix超时
+		/*
 		LOGGER.info("======================================> 开始执行");
 		try {
 			Thread.sleep(5000);
@@ -27,6 +29,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		LOGGER.info("======================================> 执行结束");
+		*/
 		return user;
 	}
 	

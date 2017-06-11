@@ -6,6 +6,7 @@ import org.dante.springcloud.domain.User;
 import org.dante.springcloud.feignclient.EurekaFeignConfigClient;
 import org.dante.springcloud.feignclient.User2FeignClient;
 import org.dante.springcloud.feignclient.UserFeignClient;
+import org.dante.springcloud.feignclient.UserFeignDisableHystrixClient;
 import org.dante.springcloud.vo.PageReq;
 import org.dante.springcloud.vo.UserVO;
 import org.slf4j.Logger;
@@ -31,6 +32,8 @@ public class UserController {
 	private UserFeignClient userFeignClient;
 	@Autowired
 	private User2FeignClient user2FeignClient;
+	@Autowired
+	private UserFeignDisableHystrixClient userFeignDisableHystrixClient;
 	@Autowired
 	private EurekaFeignConfigClient userFeignConfigClient;
 
@@ -98,5 +101,11 @@ public class UserController {
 	@PostMapping("/user_id/{id}")
 	public User user_id(@PathVariable Long id) {
 		return userFeignClient.getUserId(id);
+	}
+	
+	@GetMapping("/user3/{id}")
+	@HystrixCommand(commandProperties = {@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "8000") })
+	public User getUser3(@PathVariable Long id) {
+		return userFeignDisableHystrixClient.getUser(id);
 	}
 }
