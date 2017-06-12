@@ -13,7 +13,9 @@ zuul:
   routes:
     provider-user:
       path: /zuul_user/**
-      serviceId: micro-provider-user
+      service-id: micro-provider-user
+      sensitive-headers: null
+        
 ribbon:
   eureka:
     enabled: false

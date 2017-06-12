@@ -10,5 +10,6 @@ eureka:
 # feign hystrix 请求的默认超时时间是1秒，这里修改为5秒，解决第一次调用超时的问题
 #hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
 zuul:
+  ignored-services: '*'
   routes:
     micro-provider-user: /zuul_user/**
