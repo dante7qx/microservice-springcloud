@@ -12,8 +12,10 @@ spring:
       ddl-auto: none
   http:
     multipart:
-      max-file-size: 20MB
+      max-file-size: 30MB
       max-request-size: 100MB
+  thymeleaf:
+    cache: false
 logging:
   level:
     root: info

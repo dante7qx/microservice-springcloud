@@ -1,8 +1,12 @@
 server:
   port: 8882
+
 spring:
   application:
     name: micro-zuul-fileupload
+  http:
+    encoding:
+      force-response: true
 eureka:
   client:
     service-url:

@@ -34,6 +34,7 @@
 		<module>micro-consumer-user-feign-hystrix</module>
 		<module>micro-consumer-user-zuul</module>
 		<module>micro-zuul-fileupload</module>
+		<module>micro-sidecar</module>
 	</modules>
 
 	<parent>
