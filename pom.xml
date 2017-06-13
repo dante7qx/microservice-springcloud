@@ -33,6 +33,7 @@
 		<module>micro-consumer-user-feign</module>
 		<module>micro-consumer-user-feign-hystrix</module>
 		<module>micro-consumer-user-zuul</module>
+		<module>micro-zuul-fileupload</module>
 	</modules>
 
 	<parent>

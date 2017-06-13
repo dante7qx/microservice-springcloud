@@ -1,0 +1,16 @@
+server:
+  port: 8882
+spring:
+  application:
+    name: micro-zuul-fileupload
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+zuul:
+  routes:
+    micro-provider-user3: /zuul_file/**
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
