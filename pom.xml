@@ -35,6 +35,13 @@
 		<module>micro-consumer-user-zuul</module>
 		<module>micro-zuul-fileupload</module>
 		<module>micro-sidecar</module>
+		
+		<!-- sleuth + zipkin -->
+		<module>micro-sleuth-server</module>
+		<module>micro-sleuth-1</module>
+		<module>micro-sleuth-2</module>
+		<module>micro-sleuth-3</module>
+		<module>micro-sleuth-4</module>
 	</modules>
 
 	<parent>

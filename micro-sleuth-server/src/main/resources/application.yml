@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/zipkin
+    username: root
+    password: iamdante
+    continue-on-error: true
+zipkin:
+  storage:
+    type: mysql
+server:
+  port: 9411
