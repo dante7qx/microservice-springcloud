@@ -9,4 +9,4 @@ spring:
           username: dante
           password: Dante@2012
 encrypt:
-  key: config.foo
+  key: config.bar

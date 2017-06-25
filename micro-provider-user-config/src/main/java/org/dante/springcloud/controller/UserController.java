@@ -24,15 +24,17 @@ import com.google.common.collect.Lists;
 public class UserController {
 	
 	@Value("${config.foo}")
-	private String propVal;
+	private String foo;
+	@Value("${config.bar}")
+	private String bar;
 	
 	@Autowired
 	private UserDao userDao;
 	
 	@GetMapping("/user/prop")
 	public String getProp() {
-		return "config.foo --> [" + propVal + "]";
-	}
+		return "config.foo --> [" + foo + "], bar --> [" + bar + "]";
+	} 
 	
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
