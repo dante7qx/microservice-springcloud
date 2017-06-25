@@ -65,8 +65,3 @@ keytool -genkeypair -alias mytestkey -keyalg RSA \
 配置服务与注册中心联用
 	1、Config Client，设置 spring.cloud.config.discovery.enabled=true
 	2、配置Config Server，spring.cloud.config.discovery.serviceId=Config Server 的 Spring application name
-
-Spring Cloud Bus
-	
-	 
-	

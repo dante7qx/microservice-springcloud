@@ -8,6 +8,9 @@ spring:
           uri: https://git.oschina.net/dante7qx/oschina-config-repo
           username: sunchao.0129@163.com
           password: iamdante
+    bus:
+      trace:
+        enabled: true
   rabbitmq:
     host: localhost
     port: 5672

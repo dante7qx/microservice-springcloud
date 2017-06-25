@@ -14,6 +14,8 @@ spring:
     password: 123456
     virtual-host: /springcloudbus
 eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ipAddress}:${spring.application.index}:${server.port}
   client:
     service-url:
       defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
