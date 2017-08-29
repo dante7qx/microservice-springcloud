@@ -1,17 +1,19 @@
 package org.dante.springcloud.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.dante.springcloud.service.UploadService;
+import org.dante.springcloud.vo.UploadVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-@Controller
+@RestController
 public class FileUploadController {
 
 	private final static Logger logger = LoggerFactory.getLogger(FileUploadController.class);
@@ -20,10 +22,10 @@ public class FileUploadController {
 	private UploadService uploadService;
 	
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
-	public @ResponseBody String upload(@RequestParam("file") MultipartFile file) {
+	public String upload(@RequestParam("redheadHistory") MultipartFile file, HttpServletRequest request) {
 		String result = "ok";
 		try {
-			logger.info("Upload file: {}", file);
+			logger.info("Upload file: {}", file.getOriginalFilename());
 			uploadService.upload(file);
 		} catch (Exception e) {
 			logger.error("文件上传失败！", e);
@@ -31,4 +33,19 @@ public class FileUploadController {
 		}
 		return result;
 	}
+	
+	@RequestMapping(value = "/upload2_Ax", method = RequestMethod.POST)
+	public String upload2(UploadVO uploadVO, HttpServletRequest request) {
+		String result = "ok";
+		try {
+			MultipartFile file = uploadVO.getRedheadHistory();
+			logger.info("Upload file: {}", file.getOriginalFilename());
+			uploadService.upload(file);
+		} catch (Exception e) {
+			logger.error("文件上传失败！", e);
+			result = "wrong";
+		}
+		return result;
+	}
+	
 }

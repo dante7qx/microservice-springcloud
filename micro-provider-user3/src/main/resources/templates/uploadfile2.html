@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta content="text/html;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+<link th:href="@{easyui/themes/bootstrap/easyui.css}" rel="stylesheet"/>
+<link th:href="@{easyui/themes/icon.css}" rel="stylesheet"/>
+<script th:src="@{/webjars/jquery/1.11.3/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{easyui/jquery.easyui.min.js}" type="text/javascript"></script>
+<script th:src="@{easyui/locale/easyui-lang-zh_CN.js}" type="text/javascript"></script>
+<title>文件上传</title>
+</head>
+<body>
+	<div>
+		<!--  
+		<form th:action="@{/zuul/zuul_file/upload}" enctype="multipart/form-data" method="post">
+		-->
+		<form id="uploadFrm" method="post" enctype="multipart/form-data" novalidate="true" style="margin:15px; padding:10px;">
+			<label>标题</label>
+			<input name="title" class="easyui-textbox"/> <br/>
+			<label>选择文件</label>
+			<input name="redheadHistory" class="easyui-filebox" required="true" data-options="buttonText:'浏览',accept:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'" style="width:260px;"/><br/>
+			<input type="button" value="上传1" onclick="UploadPage.submit();"/>
+		</form>
+	</div>
+	<script th:line="javascript">
+		var UploadPage = {
+			submit: function() {
+				$('#uploadFrm').form('submit', {
+					iframe: false,
+				    url: 'upload2_Ax',
+				    success:function(result){
+				    	$.messager.alert('提示','上传结果'+result);
+				    	$('#uploadFrm').form('clear');
+				    }
+				});
+			}
+		};
+	</script>
+</body>
+</html>
