@@ -4,13 +4,13 @@
 <meta content="text/html;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
-<link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" rel="stylesheet"/>
-<link th:href="@{easyui/themes/bootstrap/easyui.css}" rel="stylesheet"/>
-<link th:href="@{easyui/themes/icon.css}" rel="stylesheet"/>
-<script th:src="@{/webjars/jquery/1.11.3/jquery.min.js}" type="text/javascript"></script>
-<script th:src="@{easyui/jquery.easyui.min.js}" type="text/javascript"></script>
-<script th:src="@{easyui/locale/easyui-lang-zh_CN.js}" type="text/javascript"></script>
+<link th:href="@{/zuul_file/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+<link th:href="@{/zuul_file/webjars/bootstrap/3.3.7/css/bootstrap-theme.min.css}" rel="stylesheet"/>
+<link th:href="@{/zuul_file/easyui/themes/bootstrap/easyui.css}" rel="stylesheet"/>
+<link th:href="@{/zuul_file/easyui/themes/icon.css}" rel="stylesheet"/>
+<script th:src="@{/zuul_file/webjars/jquery/1.11.3/jquery.min.js}" type="text/javascript"></script>
+<script th:src="@{/zuul_file/easyui/jquery.easyui.min.js}" type="text/javascript"></script>
+<script th:src="@{/zuul_file/easyui/locale/easyui-lang-zh_CN.js}" type="text/javascript"></script>
 <title>文件上传</title>
 </head>
 <body>
@@ -31,7 +31,8 @@
 			submit: function() {
 				$('#uploadFrm').form('submit', {
 					iframe: false,
-				    url: 'upload2_Ax',
+ 				    url: 'upload2_Ax',
+// 					url: '/zuul/zuul_file/upload2_Ax',
 				    success:function(result){
 				    	$.messager.alert('提示','上传结果'+result);
 				    	$('#uploadFrm').form('clear');

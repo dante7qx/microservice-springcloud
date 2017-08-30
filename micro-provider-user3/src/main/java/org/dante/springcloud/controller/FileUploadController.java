@@ -39,7 +39,8 @@ public class FileUploadController {
 		String result = "ok";
 		try {
 			MultipartFile file = uploadVO.getRedheadHistory();
-			logger.info("Upload file: {}", file.getOriginalFilename());
+			String fileName = file.getOriginalFilename();
+			logger.info("Upload file: {}", fileName);
 			uploadService.upload(file);
 		} catch (Exception e) {
 			logger.error("文件上传失败！", e);
@@ -49,3 +50,5 @@ public class FileUploadController {
 	}
 	
 }
+
+// 文件乱码: http://qa.didispace.com/?/question/44
