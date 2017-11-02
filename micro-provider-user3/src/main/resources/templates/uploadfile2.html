@@ -18,12 +18,34 @@
 		<!--  
 		<form th:action="@{/zuul/zuul_file/upload}" enctype="multipart/form-data" method="post">
 		-->
-		<form id="uploadFrm" method="post" enctype="multipart/form-data" novalidate="true" style="margin:15px; padding:10px;">
+		<form id="uploadFrm" method="post" novalidate="true" style="margin:15px; padding:10px;">
 			<label>标题</label>
 			<input name="title" class="easyui-textbox"/> <br/>
 			<label>选择文件</label>
 			<input name="redheadHistory" class="easyui-filebox" required="true" data-options="buttonText:'浏览',accept:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'" style="width:260px;"/><br/>
-			<input type="button" value="上传1" onclick="UploadPage.submit();"/>
+			<label>主题</label>
+			<input name="subject" class="easyui-textbox"/>
+			<input type="button" value="上传" onclick="UploadPage.submit();"/>
+		</form>
+	</div>
+	
+	<div style="margin-top: 20px;">
+		<form id="cnFrm" method="post" style="margin:15px; padding:10px;" action="/zuul/zuul_file/bus">
+			<label>标题</label>
+			<input name="title" class="easyui-textbox"/> <br/>
+			<label>主题</label>
+			<input name="subject" class="easyui-textbox"/> <br/>
+			<input type="submit" value="提交" />
+		</form>
+	</div>
+	
+	<div style="margin-top: 20px;">
+		<form id="busFrm" method="post" novalidate="true" style="margin:15px; padding:10px;">
+			<label>标题</label>
+			<input name="title" class="easyui-textbox"/> <br/>
+			<label>主题</label>
+			<input name="subject" class="easyui-textbox"/> <br/>
+			<input type="button" value="提交" onclick="UploadPage.submit2();"/>
 		</form>
 	</div>
 	<script th:line="javascript">
@@ -31,8 +53,18 @@
 			submit: function() {
 				$('#uploadFrm').form('submit', {
 					iframe: false,
- 				    url: 'upload2_Ax',
-// 					url: '/zuul/zuul_file/upload2_Ax',
+//  				url: 'upload2_Ax',
+ 					url: '/zuul/zuul_file/upload2_Ax',
+				    success:function(result){
+				    	$.messager.alert('提示','上传结果'+result);
+				    	$('#uploadFrm').form('clear');
+				    }
+				});
+			},
+			submit2: function() {
+				$('#busFrm').form('submit', {
+					iframe: false,
+ 					url: '/zuul/zuul_file/bus',
 				    success:function(result){
 				    	$.messager.alert('提示','上传结果'+result);
 				    	$('#uploadFrm').form('clear');

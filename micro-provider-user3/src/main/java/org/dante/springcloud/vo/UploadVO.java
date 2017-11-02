@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class UploadVO {
 	
 	private String title;
+	private String subject;
 	
 	private MultipartFile redheadHistory;
 
@@ -14,6 +15,14 @@ public class UploadVO {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getSubject() {
+		return subject;
+	}
+
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public MultipartFile getRedheadHistory() {

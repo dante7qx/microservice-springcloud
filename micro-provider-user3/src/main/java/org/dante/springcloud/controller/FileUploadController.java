@@ -49,6 +49,17 @@ public class FileUploadController {
 		return result;
 	}
 	
+	@RequestMapping(value = "/bus", method = RequestMethod.POST)
+	public String bus(UploadVO uploadVO) {
+		String result = "ok";
+		try {
+			result = uploadVO.getTitle() + " - " + uploadVO.getSubject();
+		} catch (Exception e) {
+			logger.error("文件上传失败！", e);
+			result = "wrong";
+		}
+		return result;
+	}
 }
 
 // 文件乱码: http://qa.didispace.com/?/question/44

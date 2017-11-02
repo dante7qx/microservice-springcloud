@@ -53,7 +53,6 @@ public class FallbackProvider implements ZuulFallbackProvider {
 			public void close() {
 				
 			}
-			
 		};
 	}
 
