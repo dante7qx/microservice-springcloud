@@ -96,6 +96,7 @@ public class QueryParamPortPreFilter extends ZuulFilter {
 	
 	private ReqParamVO extractReqParam(BufferedReader reader) {
 		StringBuilder reqParambuilder = new StringBuilder();
+		StringBuilder valBuilder = new StringBuilder();
     	StringBuilder fileBuilder = new StringBuilder();
 		try {
 	    	String line = reader.readLine();
@@ -125,6 +126,7 @@ public class QueryParamPortPreFilter extends ZuulFilter {
 	    		}
 	    		if(formData && !fileData) {
 	    			reqParambuilder.append(line).append("&");
+	    			valBuilder.append(line).append("&");
 	    			formData = false;
 	    		}
 	    		line = reader.readLine();
@@ -141,7 +143,7 @@ public class QueryParamPortPreFilter extends ZuulFilter {
 				e.printStackTrace();
 			}
 		}
-		return new ReqParamVO(reqParambuilder.toString(), fileBuilder.toString()); 
+		return new ReqParamVO(reqParambuilder.toString(), valBuilder.toString(), fileBuilder.toString()); 
 	}
 	
 	private String extractParamName(String contentDisposition, String key) {

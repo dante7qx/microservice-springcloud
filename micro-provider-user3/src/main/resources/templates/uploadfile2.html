@@ -30,22 +30,22 @@
 	</div>
 	
 	<div style="margin-top: 20px;">
-		<form id="cnFrm" method="post" style="margin:15px; padding:10px;" action="/zuul/zuul_file/bus">
-			<label>标题</label>
-			<input name="title" class="easyui-textbox"/> <br/>
-			<label>主题</label>
-			<input name="subject" class="easyui-textbox"/> <br/>
-			<input type="submit" value="提交" />
-		</form>
-	</div>
-	
-	<div style="margin-top: 20px;">
 		<form id="busFrm" method="post" novalidate="true" style="margin:15px; padding:10px;">
 			<label>标题</label>
 			<input name="title" class="easyui-textbox"/> <br/>
 			<label>主题</label>
-			<input name="subject" class="easyui-textbox"/> <br/>
+			<input name="subject" class="easyui-textbox"/>
 			<input type="button" value="提交" onclick="UploadPage.submit2();"/>
+		</form>
+	</div>
+	
+	<div style="margin-top: 20px;">
+		<form id="cnFrm" method="post" style="margin:15px; padding:10px;" action="/zuul/zuul_file/bus">
+			<label>标题</label>
+			<input name="title" class="easyui-textbox"/> <br/>
+			<label>主题</label>
+			<input name="subject" class="easyui-textbox"/>
+			<input type="submit" value="提交" />
 		</form>
 	</div>
 	<script th:line="javascript">

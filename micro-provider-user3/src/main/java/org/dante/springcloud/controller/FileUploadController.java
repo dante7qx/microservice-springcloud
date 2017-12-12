@@ -21,6 +21,19 @@ public class FileUploadController {
 	@Autowired
 	private UploadService uploadService;
 	
+	@RequestMapping(value = "/upload4feign", method = RequestMethod.POST)
+	public String upload4Feign(@RequestParam("file4feign") MultipartFile file) {
+		String result = "ok";
+		try {
+			logger.info("Upload file: {}", file.getOriginalFilename());
+			uploadService.upload(file);
+		} catch (Exception e) {
+			logger.error("文件上传失败！", e);
+			result = "wrong";
+		}
+		return result;
+	}
+	
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String upload(@RequestParam("redheadHistory") MultipartFile file, HttpServletRequest request) {
 		String result = "ok";

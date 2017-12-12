@@ -1,13 +1,15 @@
 package org.dante.springcloud.vo;
 
 public class ReqParamVO {
-
 	private String paramStr;
 
+	private String valStr;
+	
 	private String fileNameStr;
 
-	public ReqParamVO(String paramStr, String fileNameStr) {
+	public ReqParamVO(String paramStr, String valStr, String fileNameStr) {
 		this.paramStr = paramStr;
+		this.valStr = valStr;
 		this.fileNameStr = fileNameStr;
 	}
 
@@ -17,6 +19,14 @@ public class ReqParamVO {
 
 	public void setParamStr(String paramStr) {
 		this.paramStr = paramStr;
+	}
+
+	public String getValStr() {
+		return valStr;
+	}
+
+	public void setValStr(String valStr) {
+		this.valStr = valStr;
 	}
 
 	public String getFileNameStr() {
@@ -29,7 +39,7 @@ public class ReqParamVO {
 
 	@Override
 	public String toString() {
-		return "ReqParamVO [paramStr=" + paramStr + ", fileNameStr=" + fileNameStr + "]";
+		return "ReqParamVO [paramStr=" + paramStr + ", valStr=" + valStr + ", fileNameStr=" + fileNameStr + "]";
 	}
 
 }
