@@ -3,9 +3,6 @@ server:
 spring:
   application:
     name: micro-consumer-user-feign
-  output:
-    ansi:
-      enabled: DETECT
 eureka:
   client:
     service-url:
