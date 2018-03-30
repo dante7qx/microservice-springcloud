@@ -1,0 +1,7 @@
+feign:
+  client:
+    config:
+      micro-provider-user:
+        connect-timeout: 5000     # 相当于Request.Options
+        read-timeout: 5000        # 相当于Request.Options
+        loggerLevel: full         # 配置Feign的日志级别，相当于代码配置方式中的Logger
