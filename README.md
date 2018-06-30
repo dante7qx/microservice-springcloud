@@ -93,7 +93,79 @@ feign:
 
 ### 六. Zuul回退的改进
 
+​	通过实现`FallbackProvider` 接口，从而实现回退。
 
+- FallbackProvider是ZuulFallbackProvider的子接口。
+- ZuulFallbackProvider已经被标注`Deprecated` ，很可能在未来的版本中被删除。
+- FallbackProvider接口比ZuulFallbackProvider多了一个`ClientHttpResponse fallbackResponse(Throwable cause);` 方法，使用该方法，**可获得造成回退的原因。**
+
+```java
+@Component
+public class SpiritFallbackProvider implements FallbackProvider {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpiritFallbackProvider.class);
+	
+	/**
+	 * 表明是为哪个微服务提供回退，*表示为所有微服务提供回退
+	 */
+	@Override
+	public String getRoute() {
+		return "micro-provider-user";
+	}
+
+	@Override
+	public ClientHttpResponse fallbackResponse(Throwable cause) {
+		LOGGER.error("Zuul request error.", cause);
+		if (cause instanceof HystrixTimeoutException) {
+			return response(HttpStatus.GATEWAY_TIMEOUT);
+		} else {
+			return this.fallbackResponse();
+		}
+	}
+
+	@Override
+	public ClientHttpResponse fallbackResponse() {
+		return this.response(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+
+	private ClientHttpResponse response(final HttpStatus status) {
+		return new ClientHttpResponse() {
+			@Override
+			public HttpStatus getStatusCode() throws IOException {
+				return status;
+			}
+
+			@Override
+			public int getRawStatusCode() throws IOException {
+				return status.value();
+			}
+
+			@Override
+			public String getStatusText() throws IOException {
+				return status.getReasonPhrase();
+			}
+
+			@Override
+			public void close() {
+			}
+
+			@Override
+			public InputStream getBody() throws IOException {
+				return new ByteArrayInputStream("服务不可用，请稍后再试。".getBytes());
+			}
+
+			@Override
+			public HttpHeaders getHeaders() {
+				// headers设定
+				HttpHeaders headers = new HttpHeaders();
+				MediaType mt = new MediaType("application", "json", Charset.forName("UTF-8"));
+				headers.setContentType(mt);
+				return headers;
+			}
+		};
+	}
+}
+```
 
 ### 八. 参考文档
 
