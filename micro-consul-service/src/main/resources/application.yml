@@ -1,0 +1,12 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: consul-service
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-timeout: 20
+        health-check-interval: 12

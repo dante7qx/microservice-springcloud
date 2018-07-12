@@ -44,6 +44,9 @@
 		<module>micro-sleuth-2</module>
 		<module>micro-sleuth-3</module>
 		<module>micro-sleuth-4</module>
+
+		<!-- consul -->
+		<module>micro-consul-service</module>
 	</modules>
 
 	<parent>
@@ -91,7 +94,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-		</plugins>
+		</plugins> 
 	</build> 
 
 </project>
