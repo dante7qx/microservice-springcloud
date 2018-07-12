@@ -2,7 +2,7 @@ package org.dante.springcloud.feignclient;
 
 
 import org.dante.config.UserFeignClientConfig;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 
 import feign.Param;
 import feign.RequestLine;

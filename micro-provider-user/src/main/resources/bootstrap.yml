@@ -6,7 +6,3 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-eureka:
-  client:
-    service-url:
-      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/

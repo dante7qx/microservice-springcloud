@@ -38,8 +38,7 @@ public class UserController {
 	
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
-		User user = userDao.findOne(id);
-		
+		User user = userDao.getOne(id);
 		return user;
 	}
 	
@@ -92,7 +91,7 @@ public class UserController {
 	
 	@DeleteMapping("/del-user/{id}")
 	public List<User> delUser(@PathVariable Long id) {
-		userDao.delete(id);
+		userDao.deleteById(id);
 		return userDao.findAll(new Sort(Direction.DESC, "id"));
 	}
 	

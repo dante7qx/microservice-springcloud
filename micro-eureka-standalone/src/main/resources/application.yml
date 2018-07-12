@@ -1,9 +1,10 @@
 server:
   port: 8761
-security:
-  user:
-    name: dante
-    password: iamdante
+spring:
+  security:
+    user:
+      name: dante
+      password: iamdante
 eureka: 
   server:
     enable-self-preservation: false # 关闭自我保护模式
@@ -14,6 +15,6 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
   environment: dante-dev
   datacenter: dante-cloud

@@ -3,7 +3,7 @@ package org.dante.springcloud.feignclient;
 import org.dante.config.feign.UserFeignClientDisableHystrixConfig;
 import org.dante.springcloud.domain.User;
 import org.dante.springcloud.feignclient.fallback.UserFeignDisableHystrixClientFallback;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 

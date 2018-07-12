@@ -30,8 +30,8 @@ public class SpiritFallbackProvider implements FallbackProvider {
 	}
 
 	@Override
-	public ClientHttpResponse fallbackResponse(Throwable cause) {
-		LOGGER.error("Zuul request error.", cause);
+	public ClientHttpResponse fallbackResponse(String route, Throwable cause) {
+		LOGGER.error("Zuul request {} error.", route, cause);
 		if (cause instanceof HystrixTimeoutException) {
 			return response(HttpStatus.GATEWAY_TIMEOUT);
 		} else {
@@ -39,7 +39,6 @@ public class SpiritFallbackProvider implements FallbackProvider {
 		}
 	}
 
-	@Override
 	public ClientHttpResponse fallbackResponse() {
 		return this.response(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
@@ -80,4 +79,5 @@ public class SpiritFallbackProvider implements FallbackProvider {
 			}
 		};
 	}
+
 }
