@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: micro-consul-config
+  profiles:
+    active: dev
+
+---    
+spring: 
+  cloud:
+    consul:
+      host: localhost   ## Consul 集群环境下，配置 VIP
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+        health-check-path: /health
+      config:
+        enabled: true
+        prefix: config
+        format: YAML
+        data-key: data
+        profile-separator: '/'
+        watch:
+          enabled: true
