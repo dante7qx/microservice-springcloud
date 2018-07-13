@@ -2,11 +2,16 @@ server:
   port: 8100
 spring:
   application:
-    name: consul-service
+    name: micro-consul-service
   cloud:
     consul:
       host: localhost
       port: 8500
+      scheme: http
       discovery:
-        health-check-timeout: 20
-        health-check-interval: 12
+        instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+        prefer-ip-address: true
+        health-check-path: /health
+        health-check-timeout: 10s
+        health-check-interval: 8s
+        tags: x-man, TaiTan
