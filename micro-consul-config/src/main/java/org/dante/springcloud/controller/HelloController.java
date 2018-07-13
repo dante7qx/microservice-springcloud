@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 	
+	// 配置无法自动热更新
 	@Value("${spirit.version}")
 	private String version;
 	
