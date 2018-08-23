@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       server:
-        git:
-          uri: file://Users/dante/Documents/Project/spring/microservice/config-repo
+        native:
+          search-locations: file:////Users/dante/Documents/Project/spring/microservice/config-repo
 encrypt:
   key: config.foo
