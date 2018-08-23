@@ -1,0 +1,17 @@
+server:
+  port: 7001
+spring:
+  datasource:
+    platform: H2
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: info
+    org.dante.springcloud: debug

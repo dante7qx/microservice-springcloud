@@ -1,0 +1,23 @@
+server:
+  port: ${config.port:7999}
+spring:
+  datasource:
+    platform: h2
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: info
+    org.dante.springcloud: debug
+    com.netflix.discovery.TimedSupervisorTask: off
+
+---
+mytestkey: '{cipher}AQAN1sbJXUS+6qMX7idjWxYvcTa759J9ph2TsOYCGaRC9tLEdFwmlm+Kl8jfu7ENX/+fygbJ1FVowDVQnV7NlDV4f4P8urg+PFvN9HGhcu50QuswRnf/DwsIVq6Xclr9SNqahA/8CATxKZdEoBpdfkTqTaM03ca+T8Or2XneI39oZfy2c2RNQ+t0E/omqiG5tI49W3D+rhfVEnQ/7A3EVdFmnGrDWn7cE+dimkOiuOqRIv4j2EQqHuKHcEWE8hR8AgEtTanuFlX39xVokSzaAmIglDXQc00NKYNywT1EcuhERj/LKYVIifO9q7sUMtjMzn5xbiO5dmQzea/3Jj5vyPe32mMnLs5r/R9Y6lgG23kXCfx7AFboVgOyhZ/5dtDik/Y42E12az9yta/C2JZkT6zV'
+config:
+  foo: '{cipher}da03bd18ccab1e47c529b70ea76f82da1ac1fa85156dc9d9a1c27e7d1f6f9193'

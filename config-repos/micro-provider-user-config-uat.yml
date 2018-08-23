@@ -1,0 +1,24 @@
+server:
+  port: ${config.port:7999}
+spring:
+  datasource:
+    platform: h2
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: info
+    com.netflix.discovery.TimedSupervisorTask: off
+    org.dante.springcloud: debug
+
+---
+mytestkey: '{cipher}AQAN1sbJXUS+6qMX7idjWxYvcTa759J9ph2TsOYCGaRC9tLEdFwmlm+Kl8jfu7ENX/+fygbJ1FVowDVQnV7NlDV4f4P8urg+PFvN9HGhcu50QuswRnf/DwsIVq6Xclr9SNqahA/8CATxKZdEoBpdfkTqTaM03ca+T8Or2XneI39oZfy2c2RNQ+t0E/omqiG5tI49W3D+rhfVEnQ/7A3EVdFmnGrDWn7cE+dimkOiuOqRIv4j2EQqHuKHcEWE8hR8AgEtTanuFlX39xVokSzaAmIglDXQc00NKYNywT1EcuhERj/LKYVIifO9q7sUMtjMzn5xbiO5dmQzea/3Jj5vyPe32mMnLs5r/R9Y6lgG23kXCfx7AFboVgOyhZ/5dtDik/Y42E12az9yta/C2JZkT6zV'
+config:
+  foo: '测试测试'
+  enfoo: '{cipher}AQB02UBkuiN7T3wXviJzYGbEOPmKvv8iL8SYzzrv/vfGiVf7V2X+3JoDd1kBo7yFB27vZsi/3aBK9UH5UoaZ+rQ3grGQ7YUn9BgXplTHIqvLTA9NM+Ofc7B4qA0HVYqWlydZ4rSI1tjv1m53jk+MCa6956Fh5u64YJG/DcFL0Qu1qElacqb7HalLqvaEeHjN8hlLOtY0VWdtUrFPCCBrOYUw4SDw0PxUOpVuMeJrj07C90bLCPV/PjK4g2i7Gilqb7yWhQk9r3NeJEGsSgwfIfXRy9g0cKOP/ZOR2b3hmpMgMJ7OXvN5O88q9RMD4/ZwQ5plsABkIRbmC9eUNdwkCuN+kKLFMHEDD0lgD8CLmJc9mZADKEsQlpIDvfOVbTPLuvsiBa+SD053lS6B6jIiIMpHWs4Bae9Cvk/4SrEbA67mig=='

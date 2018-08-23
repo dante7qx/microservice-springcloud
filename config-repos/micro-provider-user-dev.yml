@@ -1,0 +1,19 @@
+server:
+  port: 7999
+spring:
+  datasource:
+    platform: h2
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    root: info
+    org.hibernate: info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor: info
+    org.dante.springcloud: debug
+config:
+  foo: '{cipher}7cf98d80b269c31df3f95b27469b23d160750ea54fa63e512dc6a1dc9e534f64'
