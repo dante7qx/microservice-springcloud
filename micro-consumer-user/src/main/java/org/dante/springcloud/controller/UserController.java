@@ -13,8 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 配置的服务实例必须大写，即 MICRO-PROVIDER-USER
+ * 
+ * @author dante
+ *
+ */
 @RestController
-@RibbonClient(name = "micro-provider-user", configuration = UserRibbonConfig.class)
+@RibbonClient(name = "MICRO-PROVIDER-USER", configuration = UserRibbonConfig.class)
 public class UserController {
 	
 	private final Logger logger = LoggerFactory.getLogger(UserController.class);

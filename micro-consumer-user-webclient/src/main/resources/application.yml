@@ -1,0 +1,20 @@
+server:
+  port: 7015
+spring:
+  application:
+    name: micro-consumer-user-webclient
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+management:
+  endpoint:
+    features:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - info
+        - health
+        - features

@@ -5,6 +5,6 @@ spring:
     config:
       server:
         native:
-          search-locations: file:////Users/dante/Documents/Project/spring/microservice/config-repo
+          search-locations: file:////Users/dante/Documents/Project/spring/microservice/config-repos
 encrypt:
   key: config.foo

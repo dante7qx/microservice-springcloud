@@ -2,13 +2,11 @@ package org.dante.springcloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
 
 @SpringBootApplication
-@EnableConfigServer
-public class MicroConfigApplication {
+public class MicroConsumerUserWebclientApplication {
 	
 	public static void main(String[] args) {
-		SpringApplication.run(MicroConfigApplication.class, args);
+		SpringApplication.run(MicroConsumerUserWebclientApplication.class, args);
 	}
 }

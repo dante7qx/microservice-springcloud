@@ -24,9 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.collect.Lists;
 
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
 @RestController
 @RefreshScope	// 修改配置文件后，能够自动刷新加载，POST 请求 Config Server 的 /refresh
-public class UserController {
+public class UserReactController {
 	
 	@Value("${config.foo}")
 	private String propVal;
@@ -34,70 +37,70 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
-	@GetMapping("/user/prop")
-	public String getProp() {
-		return "config.foo --> [" + propVal + "]";
+	@GetMapping("/userx/prop")
+	public Mono<String> getProp() {
+		return Mono.just("config.foo --> [" + propVal + "]");
 	}
 	
-	@GetMapping("/user/{id}")
-	public UserRespDTO getUser(@PathVariable Long id) {
+	@GetMapping("/userx/{id}")
+	public Mono<UserRespDTO> getUser(@PathVariable Long id) {
 		UserRespDTO userResp = new UserRespDTO();
 		User user = userDao.getOne(id);
 		BeanUtils.copyProperties(user, userResp);
-		return userResp;
+		return Mono.just(userResp);
 	}
 	
-	@GetMapping("/user/all")
-	public List<User> getAllUser() {
-		return userDao.findAll(new Sort(Direction.DESC, "id"));
+	@GetMapping("/userx/all")
+	public Flux<User> getAllUser() {
+		return Flux.just(userDao.findAll(new Sort(Direction.DESC, "id")).toArray(new User[0]));
 	}
 	
-	@PostMapping("/user/{id}")
-	public User getUser(@PathVariable Long id, @RequestBody User usr) {
-		User user = new User();
+	@PostMapping("/userx/{id}")
+	public Mono<UserRespDTO> getUser(@PathVariable Long id, @RequestBody User usr) {
+		UserRespDTO user = new UserRespDTO();
 		user.setId(id);
 		user.setAccount(usr.getAccount());
 		user.setName(usr.getName());
-		return user;
+		return Mono.just(user);
 	}
 	
-	@PostMapping("/user_id")
-	public User getUserId(@RequestParam("id") Long id) {
-		User user = new User();
+	@PostMapping("/userx_id")
+	public Mono<UserRespDTO> getUserId(@RequestParam("id") Long id) {
+		UserRespDTO user = new UserRespDTO();
 		user.setId(id);
-		return user;
+		return Mono.just(user);
 	}
 	
-	@PostMapping("/user-list")
-	public List<User> getUserList(@RequestBody User user) {
+	@PostMapping("/userx-list")
+	public Mono<List<User>> getUserList(@RequestBody User user) {
 		List<User> list = Lists.newArrayList();
 		for (int i = 1; i <= 3; i++) {
 			list.add(new User(user.getId(), user.getAccount()+"_"+i));
 		}
-		return list;
+		return Mono.just(list);
 	}
 	
-	@PostMapping("/user-vos")
-	public UserVO<User> getUserVoList(@RequestBody PageReq pageReq) {
+	@PostMapping("/userx-vos")
+	public Mono<UserVO<User>> getUserVoList(@RequestBody PageReq pageReq) {
 		UserVO<User> vo = new UserVO<User>();
 		List<User> list = Lists.newArrayList();
 		for (int i = 1; i <= 3; i++) {
 			list.add(new User(Long.valueOf(i), "user_"+i));
 		}
 		vo.setDatas(list);
-		return vo;
+		return Mono.just(vo);
 	}
 	
-	@PutMapping("/add-user")
-	public List<User> addUser(@RequestBody User user) {
+	@PutMapping("/addx-user")
+	public Flux<User> addUser(@RequestBody User user) {
 		userDao.save(user);
-		return userDao.findAll(new Sort(Direction.DESC, "id"));
+		return Flux.just(userDao.findAll(new Sort(Direction.DESC, "id")).toArray(new User[0]));
 	}
 	
-	@DeleteMapping("/del-user/{id}")
-	public List<User> delUser(@PathVariable Long id) {
+	@DeleteMapping("/delx-user/{id}")
+	public Flux<User> delUser(@PathVariable Long id) {
 		userDao.deleteById(id);
-		return userDao.findAll(new Sort(Direction.DESC, "id"));
+		return Flux.just(userDao.findAll(new Sort(Direction.DESC, "id")).toArray(new User[0]));
 	}
 	
 }

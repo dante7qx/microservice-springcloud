@@ -21,3 +21,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
+config:
+  foo: 'Spring Cloud Finchley.SR1 版本'

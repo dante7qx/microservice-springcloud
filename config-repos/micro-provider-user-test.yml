@@ -1,8 +1,8 @@
 server:
-  port: 7001
+  port: 7000
 spring:
   datasource:
-    platform: H2
+    platform: h2
   jpa:
     generate-ddl: false
     show-sql: true
@@ -15,3 +15,5 @@ logging:
     org.hibernate.type.descriptor.sql.BasicBinder: trace
     org.hibernate.type.descriptor.sql.BasicExtractor: info
     org.dante.springcloud: debug
+config:
+  foo: 'Spring Cloud Config Server Finchley.SR1 版本'
