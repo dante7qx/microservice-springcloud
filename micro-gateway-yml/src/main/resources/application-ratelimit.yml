@@ -1,0 +1,19 @@
+eureka:
+  client:
+    enabled: false
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: ratelimit_route
+        uri: http://localhost:8101
+        predicates:
+        - Path=/**
+        filters:
+        - name: RequestRateLimiter
+          args:
+            redis-rate-limiter.replenishRate: 5  # 用户每秒执行多少请求
+            redis-rate-limiter.burstCapacity: 10  # 用户在一秒钟内允许执行的最大请求数
+            key-resolver: "#{@currentUserKeyResolver}" 
+        order: -1
+          

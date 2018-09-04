@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    active: 
+  cloud:
+    config:
+      enabled: false
+eureka:
+  client:
+    enabled: false
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+        - info
+        - health
+        - metrics
+        - gateway

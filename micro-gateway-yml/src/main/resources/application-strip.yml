@@ -1,0 +1,17 @@
+eureka:
+  client:
+    enabled: false
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: strip_route
+        uri: http://localhost:8101
+        predicates:
+        - Path=/x/**
+        filters:
+        - StripPrefix=1
+          
+# Path=/x/y/**, StripPrefix=2 --> http://localhost:8210/x/y/docker
+# Path=/x/**  , StripPrefix=1 --> http://localhost:8210/x/docker
+#

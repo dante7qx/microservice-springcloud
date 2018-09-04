@@ -38,6 +38,8 @@
 		<module>micro-zuul-fileupload</module>
 		<module>micro-sidecar</module>
 		<module>micro-feign-upload</module>
+		<module>micro-gateway-yml</module>
+		<module>micro-gateway-java</module>
 
 		<!-- sleuth zipkin -->
 		<module>micro-sleuth-server</module>
@@ -78,6 +80,11 @@
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-devtools</artifactId>
+		   <optional>true</optional>
 		</dependency>
 		
 		<!-- Springboot 2.0.1 内存数据库 和 actuator 有冲突 -->

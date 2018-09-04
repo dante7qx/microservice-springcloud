@@ -1,0 +1,24 @@
+eureka:
+  client:
+    enabled: false
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      - AddRequestHeader=X-DANTE-REQ, Cry
+      - AddResponseHeader=X-DANTE-RESP, Devil
+      - AddRequestParameter=X-NAME, Coder
+      
+      routes:
+      - id: hystrix_route
+        uri: http://localhost:8101
+        predicates:
+        - Path=/**
+        filters:
+        - name: Hystrix
+          args:
+            name: dockerfallbackcmd
+            fallbackUri: forward:/fallback
+        order: -1
+        
+hystrix.command.dockerfallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 2000    

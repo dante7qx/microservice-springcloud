@@ -1,0 +1,66 @@
+eureka:
+  client:
+    enabled: false
+spring:
+  cloud:
+    gateway:
+      default-filters:
+      - AddRequestHeader=X-DANTE-REQ, Cry
+      - AddResponseHeader=X-DANTE-RESP, Devil
+      - AddRequestParameter=X-NAME, coder
+      
+      routes:
+      - id: remoteaddr_route
+        uri: http://localhost:8101
+        predicates:
+        - RemoteAddr=10.71.225.163
+        order: -1
+      
+      - id: header_route
+        uri: https://docs.okd.io
+        predicates:
+        - Header=c-n, okd
+        order: 1
+     
+      - id: path_route
+        uri: https://kubernetes.io/
+        predicates:
+        - Path=/k8s/**
+        order: 2   
+        
+      - id: cookie_route
+        uri: https://translate.google.cn
+        predicates:
+        - Cookie=i-l, dante
+        order: 3
+        
+      - id: query_route
+        uri: http://www.iocoder.cn
+        predicates:
+        - Query=name,coder
+        order: 4
+        
+      - id: between_route
+        uri: https://spring.io
+        predicates:
+        - Between=2018-08-31T22:50:00.000+08:00[Asia/Shanghai], 2018-09-01T22:50:00.000+08:00[Asia/Shanghai]         
+        order: 100
+        
+      - id: before_route
+        uri: https://cn.vuejs.org
+        predicates:
+        - Before=2018-09-02T22:50:00.000+08:00[Asia/Shanghai]
+        order: 101
+       
+      - id: after_route
+        uri: https://istio.io
+        predicates:
+        - After=2018-09-01T22:50:00.000+08:00[Asia/Shanghai]
+        order: 102
+        
+      
+      
+      
+      
+          
+                  
