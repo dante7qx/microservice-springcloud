@@ -18,7 +18,8 @@ spring:
         - name: Hystrix
           args:
             name: dockerfallbackcmd
-            fallbackUri: forward:/fallback
+            fallbackUri: forward:/fallback  ## 目前只支持 forward
         order: -1
-        
+
+## hystrix 超时触发时间
 hystrix.command.dockerfallbackcmd.execution.isolation.thread.timeoutInMilliseconds: 2000    

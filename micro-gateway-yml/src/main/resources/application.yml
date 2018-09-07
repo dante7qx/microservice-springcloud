@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: strip
+    active: weight
   cloud:
     config:
       enabled: false
@@ -16,3 +16,9 @@ management:
         - health
         - metrics
         - gateway
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG

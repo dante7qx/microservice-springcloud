@@ -9,6 +9,10 @@ import reactor.core.publisher.Mono;
 @Configuration
 public class RequestRateLimiterConfig {
 	
+	/**
+	 * 基于请求IP限流
+	 * @return
+	 */
 	@Bean
 	KeyResolver remoteAddrKeyResolver() {
 	    return exchange -> Mono.just(exchange.getRequest().getRemoteAddress().getHostName());
