@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: weight
+    active: eureka
   cloud:
     config:
       enabled: false
