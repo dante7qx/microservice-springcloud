@@ -60,7 +60,7 @@ spec:
           image: harbor.xiaohehe.com/spiritdev/eureka-cluster:v1
           imagePullPolicy: IfNotPresent
           imagePullSecrets:
-            - name: spiritdev-pushsecret-harbor-xiaohehe-com    ## 设置推送权限（可选）
+            - name: spiritdev-pushsecret-harbor-xiaohehe-com    ## 设置推送权限（可选）或者 oc secrets link default spiritdev-pushsecret-harbor-xiaohehe-com --for=pull
           ports: 
             - containerPort: 8761
               name: server
