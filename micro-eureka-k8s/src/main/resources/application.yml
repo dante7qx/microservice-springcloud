@@ -1,0 +1,25 @@
+server:
+  port: 8761
+spring:
+  security:
+    user:
+      name: ${REGISTER_USER:dante}
+      password: ${REGISTER_PWD:123456}
+  application:
+    name: ${EUREKA_APPLICATION_NAME:eureka-server}
+  cloud:
+    config:
+      enabled: false
+eureka: 
+  server:
+    enable-self-preservation: false # 关闭自我保护模式
+  instance:
+    hostname: ${EUREKA_HOST_NAME:localhost} # 服务主机名
+    prefer-ip-address: false # 猜测主机名时，优先选择ip。默认为false，使用hostname作为主机名
+  client:
+    register-with-eureka: ${BOOL_REGISTER:false} # 是否把服务中心本身当做eureka client 注册。默认为true
+    fetch-registry: ${BOOL_FETCH:false} # 是否拉取 eureka server 的注册信息。 默认为true
+    service-url:
+      defaultZone: ${EUREKA_URL_LIST:http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/}
+  environment: ${RUN_ENV:spirit-dev}
+  datacenter: ${RUN_DATA:spirit-cloud}
