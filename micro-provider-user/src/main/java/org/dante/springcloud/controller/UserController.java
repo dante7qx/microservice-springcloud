@@ -1,6 +1,7 @@
 package org.dante.springcloud.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.dante.springcloud.dao.UserDao;
 import org.dante.springcloud.domain.User;
@@ -100,4 +101,8 @@ public class UserController {
 		return userDao.findAll(new Sort(Direction.DESC, "id"));
 	}
 	
+	@GetMapping("/query")
+	public String springQueryMap(@RequestParam Map<String, Object> params) {
+		return params.toString();
+	}
 }

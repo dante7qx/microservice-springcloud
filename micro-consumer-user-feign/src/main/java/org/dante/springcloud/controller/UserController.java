@@ -5,6 +5,7 @@ import java.util.List;
 import org.dante.springcloud.domain.User;
 import org.dante.springcloud.feignclient.UserFeignClient;
 import org.dante.springcloud.feignclient.UserFeignConfigClient;
+import org.dante.springcloud.vo.ParamsVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class UserController {
 	
 	@GetMapping("/eureka-instance/{instanceId}")
 	public String getEurekaInstance(@PathVariable String instanceId) {
+		logger.info("Load eureka client instance is {}", instanceId);
 		return userFeignConfigClient.getEurekaInstance(instanceId);
 	}
 	
@@ -69,5 +71,13 @@ public class UserController {
 	@DeleteMapping("/del-user/{id}")
 	public List<User> addUser(@PathVariable Long id) {
 		return userFeignClient.delUser(id);
+	}
+	
+	@GetMapping("/query")
+	public String springQueryMap() {
+		ParamsVO vo = new ParamsVO();
+		vo.setParam1("param1");
+		vo.setParam2("参数2");
+		return userFeignClient.stringQueryMap(vo);
 	}
 }

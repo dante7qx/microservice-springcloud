@@ -59,8 +59,6 @@ spec:
         - name: eureka-cluster
           image: harbor.xiaohehe.com/spiritdev/eureka-cluster:v1
           imagePullPolicy: IfNotPresent
-          imagePullSecrets:
-            - name: spiritdev-pushsecret-harbor-xiaohehe-com    ## 设置推送权限（可选）或者 oc secrets link default spiritdev-pushsecret-harbor-xiaohehe-com --for=pull
           ports: 
             - containerPort: 8761
               name: server
@@ -89,12 +87,12 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: status.podIP
+            - name: EUREKA_REPLICAS
+              value: "3"
             - name: MY_INNER_SERVICE
               value: eureka-svc-internal
             - name: EUREKA_APPLICATION_NAME
               value: eureka
-            - name: EUREKA_REPLICAS
-              value: "3"
             - name: EUREKA_USER
               value: dante
             - name: EUREKA_PWD
@@ -111,6 +109,8 @@ spec:
               port: 8761
             initialDelaySeconds: 10
             periodSeconds: 5
+      imagePullSecrets:
+        - name: spiritdev-pushsecret-harbor-xiaohehe-com    ## 设置推送权限（可选）或者 oc secrets link default spiritdev-pushsecret-harbor-xiaohehe-com --for=pull
 ---
 apiVersion: v1
 kind: Service
