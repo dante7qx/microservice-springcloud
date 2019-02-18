@@ -52,6 +52,9 @@
 		<!-- consul -->
 		<module>micro-consul-service</module>
 		<module>micro-consul-config</module>
+		
+		<!-- k8s -->
+		<module>micro-kubernetes</module>
 	</modules>
 
 	<parent>

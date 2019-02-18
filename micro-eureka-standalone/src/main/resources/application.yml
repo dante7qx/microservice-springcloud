@@ -5,6 +5,9 @@ spring:
     user:
       name: dante
       password: iamdante
+  cloud:
+    config:
+      enabled: false
 eureka: 
   server:
     enable-self-preservation: false # 关闭自我保护模式
