@@ -6,7 +6,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration;
 
 /**
- * 参考：https://www.baeldung.com/spring-cloud-kubernetes
+ * 参考：
+ * 		https://www.baeldung.com/spring-cloud-kubernetes
+ * 		https://cloud.tencent.com/developer/article/1339952
  * 
  * @author dante
  *
