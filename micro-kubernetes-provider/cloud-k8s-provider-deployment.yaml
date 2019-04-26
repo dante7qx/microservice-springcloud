@@ -1,0 +1,47 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cloud-k8s-provider-service
+  namespace: dante
+spec:
+  selector:
+    app: cloud-k8s-provider-service
+  ports:
+  - protocol: TCP
+    port: 8891
+    nodePort: 30081
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-k8s-provider-service
+  namespace: dante
+spec:
+  selector:
+    matchLabels:
+      app: cloud-k8s-provider-service
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: cloud-k8s-provider-service
+    spec:
+      containers:
+      - name: cloud-k8s-provider-service
+        image: cloud-k8s-provider-service:v1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8891
+        env:
+        - name: spirit_author
+          valueFrom:
+            secretKeyRef:
+              name: cloud-kubernetes-provider-secret
+              key: author
+        - name: spirit_info
+          valueFrom:
+            secretKeyRef:
+              name: cloud-kubernetes-provider-secret
+              key: info

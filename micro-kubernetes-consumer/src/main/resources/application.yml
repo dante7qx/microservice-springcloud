@@ -1,0 +1,16 @@
+server:
+  port: 8891
+spring:
+  application:
+    name: cloud-k8s-consumer-service
+  cloud:
+    kubernetes:
+      client:
+        namespace: dante
+      reload:
+        enabled: true
+ribbon:
+  http:
+    client:
+      enabled: true
+management.endpoint.restart.enabled: true ## 必须配置，不然报异常 未加载'RestartEndpointWithIntegrationConfiguration'中的Bean方法'restartEndpoint'        

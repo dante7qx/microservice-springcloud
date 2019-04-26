@@ -1,0 +1,36 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cloud-k8s-consumer-service
+  namespace: dante
+spec:
+  selector:
+    app: cloud-k8s-consumer-service
+  ports:
+  - protocol: TCP
+    port: 8891
+    nodePort: 30082
+  type: NodePort
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-k8s-consumer-service
+  namespace: dante
+spec:
+  selector:
+    matchLabels:
+      app: cloud-k8s-consumer-service
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cloud-k8s-consumer-service
+    spec:
+      containers:
+      - name: cloud-k8s-consumer-service
+        image: cloud-k8s-consumer-service:v3
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8891

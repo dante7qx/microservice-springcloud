@@ -1,0 +1,18 @@
+server:
+  port: 8891
+spring:
+  application:
+    name: cloud-k8s-provider-service
+  cloud:
+    kubernetes:
+      client:
+        namespace: dante
+      reload:
+        enabled: true
+      secrets:
+        name: cloud-kubernetes-provider-secret
+management.endpoint.restart.enabled: true ## 必须配置，不然报异常 未加载'RestartEndpointWithIntegrationConfiguration'中的Bean方法'restartEndpoint'
+spirit:
+  author: Snake
+  info: "测试 spring-cloud-kuberbetes"
+        

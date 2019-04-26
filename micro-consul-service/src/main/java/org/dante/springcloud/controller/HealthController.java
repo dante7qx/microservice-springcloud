@@ -1,5 +1,7 @@
 package org.dante.springcloud.controller;
 
+import java.time.Instant;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +14,7 @@ public class HealthController {
 	
 	@GetMapping("/health")
 	public String health() {
-		logger.info("Request to check health...");
+		logger.info("Request to check health at {} ...", Instant.now().toString());
 		return "ok";
 	}
 	

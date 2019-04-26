@@ -54,7 +54,8 @@
 		<module>micro-consul-config</module>
 		
 		<!-- k8s -->
-		<module>micro-kubernetes</module>
+		<module>micro-kubernetes-provider</module>
+		<module>micro-kubernetes-consumer</module>
 	</modules>
 
 	<parent>

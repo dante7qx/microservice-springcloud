@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cloud-k8s-consumer-service
+  namespace: dante
+data:
+  application.properties: |-
+    taitan.info=I am the king from the Titans - Thanos
