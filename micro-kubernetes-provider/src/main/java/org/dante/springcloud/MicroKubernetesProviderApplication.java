@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration;
 
+/**
+ * 参考：https://www.baeldung.com/spring-cloud-kubernetes
+ * 
+ * @author dante
+ *
+ */
 @EnableDiscoveryClient
 @SpringBootApplication(exclude = {EurekaClientAutoConfiguration.class})
 public class MicroKubernetesProviderApplication {
