@@ -1,5 +1,6 @@
 package org.dante.springcloud.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.dante.springcloud.dao.UserDao;
@@ -16,8 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.google.common.collect.Lists;
 
 @RestController
 @RefreshScope	// 修改配置文件后，能够自动刷新加载，POST 请求 Config Server 的 /refresh
@@ -38,7 +37,7 @@ public class UserController {
 	
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
-		User user = userDao.findOne(id);
+		User user = userDao.getOne(id);
 		return user;
 	}
 	
@@ -58,7 +57,7 @@ public class UserController {
 	
 	@PostMapping("/user-list")
 	public List<User> getUserList(@RequestBody User user) {
-		List<User> list = Lists.newArrayList();
+		List<User> list = new ArrayList<>();
 		for (int i = 1; i <= 3; i++) {
 			list.add(new User(user.getId(), user.getAccount()+"_"+i));
 		}
@@ -73,7 +72,7 @@ public class UserController {
 	
 	@DeleteMapping("/del-user/{id}")
 	public List<User> delUser(@PathVariable Long id) {
-		userDao.delete(id);
+		userDao.deleteById(id);
 		return userDao.findAll(new Sort(Direction.DESC, "id"));
 	}
 	

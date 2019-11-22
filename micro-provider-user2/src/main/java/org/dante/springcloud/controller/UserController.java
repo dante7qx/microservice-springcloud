@@ -19,7 +19,7 @@ public class UserController {
 	
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
-		User user = userDao.findOne(id);
+		User user = userDao.getOne(id);
 		// 测试ribbon、hystrix超时
 		/*
 		LOGGER.info("======================================> 开始执行");
