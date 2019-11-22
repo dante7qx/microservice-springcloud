@@ -16,23 +16,23 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 public class HealthController {
-
+	
 	@Autowired
 	private DiscoveryClient discoveryClient;
-
+	
 	@GetMapping("/health")
 	public String health() {
 		log.info("Request to check health at {} ...", Instant.now().toString());
 		return "ok";
 	}
-
+	
 	@GetMapping("/app/{app}")
 	public String serviceUrl(@PathVariable String app) {
 		List<ServiceInstance> list = discoveryClient.getInstances(app);
 		if (!CollectionUtils.isEmpty(list)) {
-			return list.toString();
+			return list.get(0).getInstanceId();
 		}
 		return null;
 	}
-
+	
 }

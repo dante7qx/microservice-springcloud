@@ -57,6 +57,9 @@
 		<!-- k8s -->
 		<module>micro-kubernetes-provider</module>
 		<module>micro-kubernetes-consumer</module>
+		
+		<!-- zookeeper -->
+		<module>micro-zookeeper-service</module>
 	</modules>
 	
 	<!-- Greenwich 只支持 Spring Boot 2.1.x 分支。如果使用 2.0.x 请使用Finchley版本 -->
@@ -71,7 +74,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Greenwich.SR2</version>
+				<version>Greenwich.SR3</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
