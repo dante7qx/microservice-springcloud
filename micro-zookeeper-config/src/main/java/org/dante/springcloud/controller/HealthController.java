@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.util.CollectionUtils;
@@ -20,10 +21,13 @@ public class HealthController {
 	@Autowired
 	private DiscoveryClient discoveryClient;
 	
+	@Value("${app.name}")
+	private String name;
+	
 	@GetMapping("/health")
 	public String health() {
 		log.info("Request to check health at {} ...", Instant.now().toString());
-		return "ok";
+		return "ok->".concat(name);
 	}
 	
 	@GetMapping("/app/{app}")

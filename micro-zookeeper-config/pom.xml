@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -6,50 +7,27 @@
 		<artifactId>micro-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
-	<artifactId>micro-zookeeper-service</artifactId>
+
+	<artifactId>micro-zookeeper-config</artifactId>
 	<packaging>jar</packaging>
-	<name>micro-zookeeper-service</name>
+	<name>micro-zookeeper-config</name>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
+		<!-- spring-cloud-config zk 的依赖，必选 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+			<artifactId>spring-cloud-starter-zookeeper-config</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!-- spring-cloud-config zk 的依赖，为了自动刷新监听等 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-
-		<!-- Zookeeper3.4，依赖如下-->
-		<!--
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-zookeeper-all</artifactId>
-		    <exclusions>
-		        <exclusion>
-		            <groupId>org.apache.zookeeper</groupId>
-		            <artifactId>zookeeper</artifactId>
-		        </exclusion>
-		    </exclusions>
-		</dependency>
-		<dependency>
-		    <groupId>org.apache.zookeeper</groupId>
-		    <artifactId>zookeeper</artifactId>
-		    <version>3.4.14</version>
-		    <exclusions>
-		        <exclusion>
-		            <groupId>org.slf4j</groupId>
-		            <artifactId>slf4j-log4j12</artifactId>
-		        </exclusion>
-		    </exclusions>
-		</dependency>
-		-->
-	</dependencies>	
+	</dependencies>
 
 </project>

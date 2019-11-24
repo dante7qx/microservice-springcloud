@@ -5,7 +5,7 @@ spring:
     name: micro-zookeeper-service
   cloud:
     zookeeper:
-      connect-string: ${zk_addr:localhost}:${zk_port:2181}
+      connect-string: ${zk_addr:localhost}:${zk_port:2181}  ## zk集群：ip1:port1,ip2:port2,ip3:port3
       discovery: 
         root: /springcloud
         instance-id: ${spring.cloud.client.ip-address}:${server.port}

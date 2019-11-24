@@ -1,12 +1,3 @@
-server:
-  port: 8801
 spring:
-  application:
-    name: micro-zookeeper-service
-  cloud:
-    zookeeper:
-      connect-string: ${zk_addr:localhost}:${zk_port:2181}
-      discovery: 
-        root: /springcloud
-        instance-id: ${spring.cloud.client.ip-address}:${server.port}
-        
+  profiles:
+    active: dev

@@ -60,6 +60,7 @@
 		
 		<!-- zookeeper -->
 		<module>micro-zookeeper-service</module>
+		<module>micro-zookeeper-config</module>
 	</modules>
 	
 	<!-- Greenwich 只支持 Spring Boot 2.1.x 分支。如果使用 2.0.x 请使用Finchley版本 -->
