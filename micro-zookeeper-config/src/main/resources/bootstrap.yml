@@ -12,4 +12,4 @@ spring:
         enabled: true
         root: /config/zk   #指定zookeeper中属性的根目录
         watcher:
-          enabled: true    #默认值是true, 监控配置变更后是否自动更新，需配合Spring Boot Actuators 使用        
+          enabled: true    #默认值是true, 监控配置变更后是否自动更新，需配合Spring Boot Actuators 使用   
