@@ -8,8 +8,8 @@ spec:
     app: cloud-k8s-consumer-service
   ports:
   - protocol: TCP
-    port: 8891
-    nodePort: 30082
+    port: 8080
+    nodePort: 30030
   type: NodePort
 
 ---
@@ -30,7 +30,14 @@ spec:
     spec:
       containers:
       - name: cloud-k8s-consumer-service
-        image: cloud-k8s-consumer-service:v3
+        image: spirit/cloud-k8s-consumer-service:v1
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 8891
+        - containerPort: 8080
+        env:
+        - name: server_port
+          value: "8080"
+        - name: spring_cloud_kubernetes_ribbon_mode
+          value: "pod"
+        - name: feign_hystrix_enabled
+          value: "true"

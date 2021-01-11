@@ -52,7 +52,7 @@ public class UserReactController {
 	
 	@GetMapping("/userx/all")
 	public Flux<User> getAllUser() {
-		return Flux.just(userDao.findAll(new Sort(Direction.DESC, "id")).toArray(new User[0]));
+		return Flux.just(userDao.findAll(Sort.by(Direction.DESC, "id")).toArray(new User[0]));
 	}
 	
 	@PostMapping("/userx/{id}")
@@ -94,13 +94,13 @@ public class UserReactController {
 	@PutMapping("/addx-user")
 	public Flux<User> addUser(@RequestBody User user) {
 		userDao.save(user);
-		return Flux.just(userDao.findAll(new Sort(Direction.DESC, "id")).toArray(new User[0]));
+		return Flux.just(userDao.findAll(Sort.by(Direction.DESC, "id")).toArray(new User[0]));
 	}
 	
 	@DeleteMapping("/delx-user/{id}")
 	public Flux<User> delUser(@PathVariable Long id) {
 		userDao.deleteById(id);
-		return Flux.just(userDao.findAll(new Sort(Direction.DESC, "id")).toArray(new User[0]));
+		return Flux.just(userDao.findAll(Sort.by(Direction.DESC, "id")).toArray(new User[0]));
 	}
 	
 }

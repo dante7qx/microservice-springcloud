@@ -6,12 +6,23 @@ spring:
   cloud:
     consul:
       host: localhost
-      port: 8500
+      port: 32001
       scheme: http
       discovery:
         instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
         prefer-ip-address: true
+#        ip-address: ${MY_NODE_IP:128.196.1.234}
+#        port: ${REG_PORT:6677}
         health-check-path: /health
         health-check-timeout: 10s
         health-check-interval: 8s
         tags: x-man, TaiTan
+#        register-health-check: fals
+#        heartbeat:
+#          enabled: true
+#spring.cloud.consul.discovery.register-health-check=false
+#spring.cloud.consul.discovery.heartbeat.enabled=true
+## 手动指定注册IP、Port
+## prefer-ip-address: true
+## ip-address: 要注册的IP
+## port: 要注册的Port

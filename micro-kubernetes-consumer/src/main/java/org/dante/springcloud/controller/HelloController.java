@@ -42,17 +42,16 @@ public class HelloController {
 
 	@GetMapping("/svc_list")
 	public String svcList() throws UnknownHostException {
-		String serviceList = "";
+		StringBuilder serviceList = new StringBuilder();
 		if (discoveryClient != null) {
 			List<String> services = this.discoveryClient.getServices();
 			for (String service : services) {
 				List<ServiceInstance> instances = this.discoveryClient.getInstances(service);
-				serviceList += ("[" + service + " : " + ((!CollectionUtils.isEmpty(instances)) ? instances.size() : 0)
-						+ " instances ]");
+				serviceList.append(("[" + service + " : "
+						+ ((!CollectionUtils.isEmpty(instances)) ? instances.size() : 0) + " instances ]"));
 			}
 		}
-		return serviceList;
+		return serviceList.toString();
 	}
-
 
 }

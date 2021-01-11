@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-consul-server
+  namespace: dante
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: micro-consul-server
+  template:
+    metadata:
+      labels:
+        app: micro-consul-server
+    spec:
+      containers:
+      - name: micro-consul-server
+        image: consul:1.6
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 8500
+        resources:
+          requests:
+            cpu: 128m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+            
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: micro-consul-server
+  namespace: dante
+spec:
+  type: NodePort
+  selector:
+    app: micro-consul-server
+  ports:
+  - name: micro-consul-server
+    port: 8500
+    targetPort: 8500
+    nodePort: 32001

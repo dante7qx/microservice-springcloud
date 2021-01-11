@@ -5,10 +5,13 @@ spring:
     name: cloud-k8s-provider-service
   cloud:
     kubernetes:
+      discovery:
+        all-namespaces: false
       client:
         namespace: dante
       reload:
         enabled: true
+        
       secrets:
         name: cloud-kubernetes-provider-secret
 management.endpoint.restart.enabled: true ## 必须配置，不然报异常 未加载'RestartEndpointWithIntegrationConfiguration'中的Bean方法'restartEndpoint'

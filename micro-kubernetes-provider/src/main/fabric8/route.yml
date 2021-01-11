@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: cloud-k8s-provider-service
+spec:
+  port:
+    targetPort: 8891
+  to:
+    kind: Service
+    name: cloud-k8s-provider-service

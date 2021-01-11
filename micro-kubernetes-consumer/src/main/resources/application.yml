@@ -9,8 +9,11 @@ spring:
         namespace: dante
       reload:
         enabled: true
-ribbon:
-  http:
-    client:
-      enabled: true
+      ribbon:
+        mode: service
+        
+## 打开feign的熔断机制，默认是关闭的 false
+feign:
+  hystrix:
+    enabled: true
 management.endpoint.restart.enabled: true ## 必须配置，不然报异常 未加载'RestartEndpointWithIntegrationConfiguration'中的Bean方法'restartEndpoint'        
