@@ -63,19 +63,36 @@
 		<module>micro-zookeeper-config</module>
 	</modules>
 	
-	<!-- Greenwich 只支持 Spring Boot 2.1.x 分支。如果使用 2.0.x 请使用Finchley版本 -->
-	<!-- https://segmentfault.com/a/1190000018013790 -->
-	<parent>
+	<!-- 
+		2020.0.x aka Ilford
+		2.4.x
+		
+		Hoxton
+		2.2.x, 2.3.x (Starting with SR5)
+		
+		Greenwich
+		2.1.x
+		
+		Finchley
+		2.0.x
+		
+		Edgware
+		1.5.x
+		
+		Dalston
+		1.5.x
+	 -->
+	<parent> 
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.2.RELEASE</version>
+		<version>2.3.5.RELEASE</version>
 	</parent>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>Hoxton.SR1</version>
+				<version>Hoxton.SR9</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

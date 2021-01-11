@@ -20,6 +20,6 @@ public class UserRibbonConfig {
 	
 	@Bean
 	public IPing pingUrl() {
-		return new PingUrl();
+		return new PingUrl(false, "/actuator/health");
 	}
 }
