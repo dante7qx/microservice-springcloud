@@ -22,4 +22,4 @@ eureka:
     service-url:
       defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
 config:
-  foo: 'Spring Cloud 2020.0.0 版本'
+  foo: 'Spring Cloud 2020.0.5 版本'

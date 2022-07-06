@@ -4,6 +4,8 @@ spring:
   application:
     name: micro-consumer-user
   cloud:
+    config:
+      enabled: false
     loadbalancer:
       ribbon:
         enabled: false
