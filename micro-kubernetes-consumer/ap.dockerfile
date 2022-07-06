@@ -1,6 +1,6 @@
 FROM dante2012/java:oraclejre-1.8.0_212 
 
-LABEL MAINTAINER="sunchao.zh <sunchao.bj@ccbft.com>"
+LABEL MAINTAINER="sunchao.zh <dante@dante7qx@126.com>"
 
 ENV JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=128m"
 

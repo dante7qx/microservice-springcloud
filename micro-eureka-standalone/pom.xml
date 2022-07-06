@@ -21,6 +21,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-	</dependencies>	
+		<!-- 2020.0.0 需要添加以下依赖 jersey-apache-client4，版本 1.19.4 -->
+		<dependency>
+		    <groupId>com.sun.jersey.contribs</groupId>
+		    <artifactId>jersey-apache-client4</artifactId>
+		    <version>1.19.4</version>
+		</dependency>
+		
+	</dependencies>
 
 </project>

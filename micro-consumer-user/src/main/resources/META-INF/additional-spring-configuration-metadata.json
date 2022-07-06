@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "loadbalancer.client.name",
+  "type": "java.lang.String",
+  "description": "A description for 'loadbalancer.client.name'"
+}]}

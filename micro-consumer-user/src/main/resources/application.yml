@@ -3,14 +3,16 @@ server:
 spring:
   application:
     name: micro-consumer-user
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
 eureka:
   client:
     service-url:
       defaultZone: http://dante:iamdante@${eureka.host:localhost}:${eureka.port:8761}/eureka/
-# 配置文件的优先级高于代码自定义@RibbonClient
-MICRO-PROVIDER-USER:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.ZoneAvoidanceRule
-micro-provider-user2:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+## 配置服务调用方的 Service Name
+loadbalancer: 
+  client: 
+    name: MICRO-PROVIDER-USER

@@ -4,9 +4,8 @@ import org.dante.springcloud.domain.User;
 import org.dante.springcloud.feignclient.User2FeignClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
-
-import feign.hystrix.FallbackFactory;
 
 /**
  * 通过配置fallbackFactory，可以获取失败的原因
