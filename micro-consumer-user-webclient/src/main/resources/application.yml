@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: micro-consumer-user-webclient
+  cloud:
+    config:
+      enabled: false
 eureka:
   client:
     service-url:
