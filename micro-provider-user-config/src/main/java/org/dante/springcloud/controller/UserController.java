@@ -37,13 +37,13 @@ public class UserController {
 	
 	@GetMapping("/user/{id}")
 	public User getUser(@PathVariable Long id) {
-		User user = userDao.getOne(id);
+		User user = userDao.getById(id);
 		return user;
 	}
 	
 	@GetMapping("/user/all")
 	public List<User> getAllUser() {
-		return userDao.findAll(new Sort(Direction.DESC, "id"));
+		return userDao.findAll(Sort.by(Direction.DESC, "id"));
 	}
 	
 	@PostMapping("/user/{id}")
@@ -67,13 +67,13 @@ public class UserController {
 	@PutMapping("/add-user")
 	public List<User> addUser(@RequestBody User user) {
 		userDao.save(user);
-		return userDao.findAll(new Sort(Direction.DESC, "id"));
+		return userDao.findAll(Sort.by(Direction.DESC, "id"));
 	}
 	
 	@DeleteMapping("/del-user/{id}")
 	public List<User> delUser(@PathVariable Long id) {
 		userDao.deleteById(id);
-		return userDao.findAll(new Sort(Direction.DESC, "id"));
+		return userDao.findAll(Sort.by(Direction.DESC, "id"));
 	}
 	
 }
